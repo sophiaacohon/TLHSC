@@ -1,0 +1,96 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 1em;
+  margin: 1em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.banner{
+  width: auto;
+}
+
+.navBar{
+    position: sticky;
+  top: 0; 
+  background-color: #242424; 
+  z-index: 100;
+}
+
+.card{
+  background-image: linear-gradient(180deg, rgba(66,20,16,1) 0%, rgba(182,34,34,1) 78%);
+}
+
+.backgroundImage {
+  width: 100vw;
+  height: calc(70vh - 70px);
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+  margin: 30px;
+}
+
+.backgroundImage img {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+}
+
+.vision {
+  display: flex;
+  margin: 20px;
+}
+
+.visionImage {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.visionImage img {
+  width: 100%;
+  height: auto; 
+}
+
+.visionT {
+  flex: 2;
+}
+
+.mission {
+  display: flex;
+  margin: 20px;
+}
+
+.missionImage {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.missionImage img {
+  width: 100%;
+  height: auto; 
+}
+
+.missionT {
+  flex: 2;
+}
+
+.footer {
+  background-image: linear-gradient(180deg, rgba(66, 20, 16, 1) 0%, rgba(182, 34, 34, 1) 78%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer h2 {
+  margin-bottom: 10px;
+}
