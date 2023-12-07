@@ -4,6 +4,7 @@ import './App.css';
 const App = () => {
   return (
     <div>
+      <h3>LOGIN</h3>
       <label>Username</label>
       <input type="text" />
       <br />
@@ -16,11 +17,7 @@ const App = () => {
       <input type="radio" name="user_type" id="" />MANAGER
       <input type="radio" name="user_type" id="" />STAFF
       <br />
-      <select name="USER_TYPE" id="">
-        <option value="ADMIN">ADMIN</option>
-        <option value="MANAGER">MANAGER</option>
-        <option value="STAFF">STAFF</option>
-      </select>
+      <button type="submit">SUBMIT</button>
     </div>
   );
 };
