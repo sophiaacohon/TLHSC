@@ -11,9 +11,7 @@ import {
 import Dashboard from './components/admin/Dashboard'
 import Analytics from './components/admin/Analytics'
 import Inventory from './components/admin/Inventory'
-import Maintenance from './components/admin/Maintenance'
 import Transactions from './components/admin/Transactions'
-import Finance from './components/admin/Finance'
 import Employees from './components/admin/Employees'
 
 const router = createBrowserRouter([
@@ -30,16 +28,8 @@ const router = createBrowserRouter([
     element: <Inventory/>,
   },
   {
-    path: '/maintenance',
-    element: <Maintenance/>,
-  },
-  {
     path: '/transactions',
     element: <Transactions/>,
-  },
-  {
-    path: '/finance',
-    element: <Finance/>,
   },
   {
     path: '/employees',
