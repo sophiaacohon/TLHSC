@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'mydb'
+  database: 'tlhsc_db'
 });
 
 // app.get('/dashboard-data', (req, res) => {

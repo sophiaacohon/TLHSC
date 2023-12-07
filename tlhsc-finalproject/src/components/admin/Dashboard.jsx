@@ -44,7 +44,7 @@ const Dashboard = () => {
           </div>
 
           <div>
-            <h3>Sold Products</h3>
+            <h3>Packed</h3>
             <p>{dashboardData.soldProducts}</p>
           </div>
         </div>
