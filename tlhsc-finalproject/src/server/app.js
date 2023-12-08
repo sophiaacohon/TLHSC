@@ -2,6 +2,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 
 const port = 3000;
 const app = express();
@@ -22,6 +23,37 @@ db.connect((err) => {
   } else {
     console.log('Connected to MySQL');
   }
+});
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  console.log("Received login attempt:", username, password);
+
+  const sql = 'SELECT * FROM employee WHERE emp_username = ?';
+
+  db.query(sql, [username], (error, result) => {
+    if (error) {
+      console.log(error);
+      return res.status(401).json({ message: "Invalid Username" });
+    }
+
+    if (result && result.length > 0) {
+      const user = result[0];
+
+      console.log("User from database:", user);
+      if ('emp_password' in user) {
+        if (user.emp_password.trim() === password.trim()) {
+          return res.json({ user });
+        } else {
+          return res.status(401).json({ message: "Wrong Password" });
+        }
+      } else {
+        return res.status(401).json({ message: "No Password Found" });
+      }
+    } else {
+      return res.status(401).json({ message: "Invalid Username" });
+    }
+  });
 });
 
 app.get('/dashboard-data', async (req, res) => {
