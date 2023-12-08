@@ -9,10 +9,11 @@ import {
 } from 'react-router-dom'
 
 import Dashboard from './components/admin/Dashboard'
-import Analytics from './components/admin/Analytics'
 import Inventory from './components/admin/Inventory'
 import Transactions from './components/admin/Transactions'
 import Employees from './components/admin/Employees'
+
+import mDashboard from './components/manager/mDashboard'
 
 const router = createBrowserRouter([
   {
@@ -20,21 +21,18 @@ const router = createBrowserRouter([
     element: <Dashboard/>,
   },
   {
-    path: '/analytics',
-    element: <Analytics/>,
-  },
-  {
-    path: '/inventory',
+    path: '/admin/inventory',
     element: <Inventory/>,
   },
   {
-    path: '/transactions',
+    path: '/admin/transactions',
     element: <Transactions/>,
   },
   {
-    path: '/employees',
+    path: '/admin/employees',
     element: <Employees/>,
   },
+
 
 ])
 
