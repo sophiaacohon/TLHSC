@@ -91,7 +91,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`customer_id`, `customer_fname`, `customer_mname`, `customer_lname`, `customer_contact_number`, `credit_card_number`) VALUES
 (1, 'Kathryn', 'Manuel', 'Bernardo', '09171230143', '1234567890123456'),
 (2, 'Daniel', 'Ford', 'Padilla', '09170143692', '0987654321098765'),
-(3, 'Billie Eilish', 'Baird', 'O\'Connell', '7143238934', '9324982349243239'),
+(3, 'Billie', 'Eilish', 'Baird', '7143238934', '9324982349243239'),
 (4, 'Joseph', 'Cecil', 'Marco', '09182347492', '3248123004821238'),
 (5, 'Maria Amanda', 'Barrameda', 'Paraiso', '09082349135', ''),
 (6, 'Elizabeth Marie', 'Barrameda', 'Paraiso', '09230458832', '3199349283023858'),
