@@ -119,6 +119,123 @@ app.get('/dashboard-data', async (req, res) => {
   }
 });
 
+app.get('/transaction-data', async (req, res) => {
+  try {
+    const transactionDataQuery = `
+      SELECT
+        receipt_no as no,
+        receipt_date_time as datetime,
+        receipt_total_amount as total,
+        payment_type as payment,
+        receipt_status as payment_status,
+        need_delivery as needdelivery
+      FROM receipt;
+    `;
+
+    const [transactionDataResults] = await db.promise().query(transactionDataQuery);
+
+    const transactionData = transactionDataResults.map((row) => ({
+      no: row.no,
+      datetime: row.datetime,
+      total: row.total,
+      payment: row.payment,
+      payment_status: row.payment_status,
+      needdelivery: row.needdelivery,
+    }));
+
+    res.json({ row: transactionData });
+  } catch (error) {
+    console.error('Error fetching transaction data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/inventory-data', async (req, res) => {
+  try {
+    const inventoryQuery = 'SELECT product_name, product_description, product_qty_stock, product_price, product_status FROM product';
+
+    const [inventoryResults] = await db.promise().query(inventoryQuery);
+
+    const inventoryData = {
+      row: inventoryResults,
+    };
+
+    res.json(inventoryData);
+  } catch (error) {
+    console.error('Error fetching inventory data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/employee-data', (req, res) => {
+  const query = 'SELECT * FROM employee';
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching employee data:', err.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json({ row: results });
+    }
+  });
+});
+
+app.post('/add-employee', async (req, res) => {
+  try {
+    const {
+      emp_fname,
+      emp_mname,
+      emp_lname,
+      emp_username,
+      emp_password,
+      branch_id,
+      emp_type,
+    } = req.body;
+
+    const addEmployeeQuery = `
+      INSERT INTO employee
+      (emp_fname, emp_mname, emp_lname, emp_username, emp_password, branch_id, emp_type)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    const values = [
+      emp_fname,
+      emp_mname,
+      emp_lname,
+      emp_username,
+      hashedPassword,
+      branch_id,
+      emp_type,
+    ];
+
+    db.query(addEmployeeQuery, values, (error, results) => {
+      if (error) {
+        console.error('Error adding employee:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      } else {
+        console.log('Employee added successfully');
+        res.json({ success: true });
+      }
+    });
+  } catch (error) {
+    console.error('Error adding employee:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.delete('/employee/:id', (req, res) => {
+  const employeeId = req.params.id;
+  const query = 'DELETE FROM employee WHERE emp_id = ?';
+
+  db.query(query, [employeeId], (err, results) => {
+    if (err) {
+      console.error('Error deleting employee:', err.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json({ message: 'Employee deleted successfully' });
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

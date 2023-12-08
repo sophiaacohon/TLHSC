@@ -5,10 +5,10 @@ import { UserProvider } from './UserContext';
 
 import Login from './components/admin/Login';
 import Dashboard from './components/admin/Dashboard';
-import Analytics from './components/admin/Analytics';
 import Inventory from './components/admin/Inventory';
 import Transactions from './components/admin/Transactions';
 import Employees from './components/admin/Employees';
+import mDashboard from './components/manager/mDashboard';
 
 const App = () => {
   return (
@@ -17,10 +17,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/analytics" element={<Analytics />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/employees" element={<Employees />} />
+          <Route path="/manager/mDashboard" element={<mDashboard />} />
         </Routes>
       </Router>
     </UserProvider>

@@ -9,10 +9,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post
-      ('http://localhost:3000/login',
-       {username,password},
-       );
+      const response = await axios.post(
+        'http://localhost:3000/login',
+        { username, password },
+      );
 
       const userType = response.data.userType;
 
@@ -24,45 +24,47 @@ const Login = () => {
           navigate('./Dashboard');
           break;
         case 'manager':
-          navigate('../manager/Dashboard');
+          navigate('../manager/mDashboard');
           break;
         default:
           navigate('/dashboard');
           break;
       }
-
     } catch (error) {
-        if (error.response && error.response.status === 401) {
-            alert('Wrong username or password. Please try again.');
-          } else {
-            console.error('Login failed:', error.message);
-          }
-        }
+      if (error.response && error.response.status === 401) {
+        alert('Wrong username or password. Please try again.');
+      } else {
+        console.error('Login failed:', error.message);
+      }
+    }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form>
-        <label>
+    <div className="flex items-center justify-center h-screen">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md">
+        <label className="block text-gray-700 text-sm font-bold mb-2">
           Username:
           <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
-        <br />
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
           Password:
           <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <br />
-        <button type="button" onClick={handleLogin}>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          onClick={handleLogin}
+        >
           Login
         </button>
       </form>
